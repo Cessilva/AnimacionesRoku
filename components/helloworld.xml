@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="HelloWorld" extends="Scene"> 
 	<children>
-      <Label id="myLabel" 
-      	text="Hello World!"
-      	width="1280" 
-      	height="720" 
-      	horizAlign="center"
-      	vertAlign="center"
-      	/>
+      <Poster id="myPoster"
+	    opacity="1.0"
+	    uri="pkg:/images/channel-poster_sd.png" />
+	<!-- Vector animation example -->
+	<Animation id="scaleAnimation"
+		duration="1"
+		repeat="true"
+		easeFunction="linear" >
+		<Vector2DFieldInterpolator id = "myInterp"
+		key="[0.0, 0.25, 0.5, 0.75, 1.0]"
+		keyValue="[ [0.0, 0.0], [0.25, 0.25], [0.5, 0.5], [0.75, 0.75], [1.0, 1.0]]"
+		fieldToInterp="myPoster.scale" />
+	</Animation>
+	<Animation id="transAnimation"
+		duration="1"
+		repeat="true"
+		control="start"
+		easeFunction="linear" >
+		<Vector2DFieldInterpolator id = "myInterp2"
+			key="[0.0, 1.0]"
+			keyValue="[ [640.0, 320.0], [100.0, 100.0] ]"
+			fieldToInterp="myPoster.translation" />
+	</Animation>
+	<!-- Float animation example -->
+	<Poster  id="testPoster"  
+	uri="pkg:/images/channel-poster_sd.png"  
+	width="0.0"  height="0.0"  
+	translation="[100,300]"  
+	opacity="0.0" />
+    <Animation   
+		id="testAnimation"  
+		duration="10"  
+		repeat="true"  
+		control="start"  
+		easeFunction="linear" >
+        <FloatFieldInterpolator    
+		id = "testFloat"   
+		key="[0.0, 0.5, 1.0]"    
+		keyValue="[ 1.0, 0.0, 1.0 ]"       
+		fieldToInterp="testPoster.opacity"/>
+    </Animation>
+	<!-- Color animation example -->
+	<Rectangle   
+	id="testRectangle"   
+	color="0x0000CCFF"   
+	width="810"   
+	height="44"   
+	translation="[100,500]" />
+    <Animation   
+		id="testAnimation"  
+		duration="10"  
+		repeat="true"  
+		control="start"  
+		easeFunction="linear" >
+        <ColorFieldInterpolator 
+		id = "testColor"   
+		key="[0.0, 0.5, 1.0]"    
+		keyValue="[ 0x0000CCFF, 0x00000FFF, 0x0000CCFF ]"      
+		fieldToInterp="testRectangle.color"   />
+    </Animation>
   </children>
 
 <!-- BrightScript Portion -->
